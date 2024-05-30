@@ -1,0 +1,16 @@
+Package: retention
+Title: Player Retention Analytics
+Version: 0.0.0.9000
+Authors@R: 
+    person("Charles", "Gray", , "charlestigray@gmail.com", role = c("aut", "cre"))
+Description: Simulate game data and visualise retention by build and over time, with confidence.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    dplyr,
+    purrr,
+    stringr,
+    tibble,
+    tidyr
