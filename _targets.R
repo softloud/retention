@@ -5,6 +5,7 @@
 
 # Load packages required to define the pipeline:
 library(targets)
+library(retention)
 # library(tarchetypes) # Load other packages as needed.
 
 # Set target options:
@@ -44,7 +45,7 @@ options(clustermq.scheduler = "multicore")
 # Install packages {{future}}, {{future.callr}}, and {{future.batchtools}} to allow use_targets() to configure tar_make_future() options.
 
 # Run the R scripts in the R/ folder with your custom functions:
-tar_source()
+# tar_source()
 # source("other_functions.R") # Source other scripts as needed.
 
 # Replace the target list below with your own:
@@ -56,6 +57,6 @@ list(
   ),
   tar_target(
     name = builds,
-    command = get_builds()
+    command = get_builds() |> purrr::pluck('build')
   )
 )

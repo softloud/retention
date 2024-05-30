@@ -21,7 +21,7 @@ get_builds <- function(major_change_max = 1, minor_change_max = 1, hot_fix_max =
     major_minor_builds <- 
     tibble::tibble(
         major_change = seq(0, major_change_max),
-        max_minor = sample(0:minor_change_max),
+        max_minor = sample(0:minor_change_max, major_change_max, replace = TRUE),
         minor_change = purrr::map(max_minor, ~seq(0, .x))
     ) |> 
         tidyr::unnest(.data$minor_change) |>
