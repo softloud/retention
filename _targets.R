@@ -50,13 +50,19 @@ options(clustermq.scheduler = "multicore")
 
 # Replace the target list below with your own:
 list(
+
   tar_target(
-    name = max_players_per_build,
-    command = 3
-    # format = "feather" # efficient storage for large data frames
+    name = versions,
+    command = get_versions()
   ),
+
   tar_target(
-    name = builds,
-    command = get_builds() |> purrr::pluck('build')
+    builds,
+    command = set_build_releases(versions)
+  ),
+
+  tar_target(
+    name = users,
+    command = get_users(builds)
   )
 )
