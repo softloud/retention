@@ -1,7 +1,9 @@
 ^LICENSE\.md$
-^blackboard\.R$
+^simulate_retention_data\.R$
 ^_targets\.R$
 ^run\.R$
 ^run\.sh$
 ^targets_frequent\.R$
 ^_targets$
+^retention_data$
+^targets_fails$
