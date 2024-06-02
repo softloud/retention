@@ -7,7 +7,7 @@ Description: Simulate game data and visualise retention by build and over time, 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Imports: 
     dplyr,
     purrr,
@@ -15,4 +15,8 @@ Imports:
     tibble,
     tidyr,
     lubridate,
-    magrittr
+    magrittr,
+    assertthat
+Depends: 
+    R (>= 2.10)
+LazyData: true

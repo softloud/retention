@@ -1,0 +1,35 @@
+Sure, here's a draft for your README file:
+
+------------------------------------------------------------------------
+
+# Retention
+
+`Retention` is an R package that contains datasets related to user activity, user details, and build versions. These datasets can be used for analyses such as user retention, activity patterns, and the impact of different build versions on user activity.
+
+It has functions for simulating builds, users, and activity data, each of which is customisable to control scale of data output.
+
+## Installation
+
+You can install the `Retention` package from GitHub using the `devtools` package. Run the following commands in your R console:
+
+``` r
+# Install devtools if you haven't already
+if (!require(devtools)) {
+  install.packages("devtools")
+}
+
+# Install the Retention package from GitHub
+devtools::install_github("softloud/retention")
+```
+
+## Data
+
+The data in this package was generated using the `simulate_retention_data.R` script. The datasets are stored as RDS files, called by the retention package, or accessed as csv files in retention_data/ and are:
+
+1.  `user_activity`: This dataset tracks the activity of users across different build versions and dates. It contains 146,463 rows and 3 variables: `user`, `build`, and `activity_date`.
+
+2.  `users`: This dataset tracks the activity of users from their first build version and date. It contains 47,031 rows and 4 variables: `user`, `first_build`, `activity_start`, and `activity_days`.
+
+3.  `builds`: This dataset tracks the release information of different build versions. It contains 57 rows and 4 variables: `build`, `release_length`, `release_start`, and `release_end`.
+
+For more detailed information about these datasets, please refer to the documentation in the `pkg_data.R` file.

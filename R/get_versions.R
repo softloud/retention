@@ -11,47 +11,38 @@
 #' @importFrom dplyr select
 #' @importFrom dplyr mutate
 #' @importFrom lubridate date days
-#' @name get_builds
+#' @name get_versions
 #' 
 #' @examples
-#' get_builds(1, 1, 2)
-
-utils::globalVariables(c(".data", 
-    "max_minor", 
-    "max_fix", 
-    "major_change", 
-    "minor_change", 
-    "hot_fix"))
+#' get_versions(1, 1, 2)
 
 get_versions <- function(
     major_change_max = 1, 
     minor_change_max = 1, 
-    hot_fix_max = 1,
-    new_users_max = 2) {
+    hot_fix_max = 1) {
 
     major_minor_builds <- 
         tibble::tibble(
             major_change = seq(0, major_change_max),
-            max_minor = sample(0:minor_change_max, major_change_max, replace = TRUE),
+            max_minor = sample(0:minor_change_max, 
+                major_change_max + 1, replace = TRUE),
             minor_change = purrr::map(max_minor, ~seq(0, .x))
         ) |> 
-            tidyr::unnest(.data$minor_change) |>
-            dplyr::select(-.data$max_minor)
+            tidyr::unnest(minor_change) |>
+            dplyr::select(-max_minor)
 
-        major_minor_builds |>
-            dplyr::mutate(
-                max_fix = sample(
-                    0:hot_fix_max, 
-                    nrow(major_minor_builds), 
-                    replace = TRUE),
-                hot_fix = purrr::map(.data$max_fix, ~seq(0, .x))
-                ) |>
-                tidyr::unnest(.data$hot_fix) |>
-                dplyr::select(-max_fix) |>
-                dplyr::mutate(build = 
-                    stringr::str_c(major_change, minor_change, hot_fix, sep = '.')
-                )
-
-
-
-}
+    major_minor_builds |>
+        dplyr::mutate(
+            max_fix = sample(
+                0:hot_fix_max, 
+                nrow(major_minor_builds), 
+                replace = TRUE),
+            hot_fix = purrr::map(max_fix, ~seq(0, .x))
+            ) |>
+            tidyr::unnest(hot_fix) |>
+            dplyr::select(-max_fix) |>
+            dplyr::mutate(build = 
+                stringr::str_c(major_change, 
+                    minor_change, hot_fix, sep = '.')
+            )
+}        
