@@ -7,3 +7,7 @@
 ^_targets$
 ^retention_data$
 ^targets_fails$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
