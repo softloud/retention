@@ -124,7 +124,7 @@ Simulate activity.
 user_activity_data <- get_activity(builds, users) %>% 
   dplyr::filter(active_on_date == TRUE)
 
-head(user_activity_data, 50)
+user_activity_data
 
 ```
 
