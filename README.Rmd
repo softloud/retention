@@ -1,6 +1,6 @@
-Sure, here's a draft for your README file:
-
-------------------------------------------------------------------------
+---
+title: README
+---
 
 # Retention
 
@@ -22,14 +22,101 @@ if (!require(devtools)) {
 devtools::install_github("softloud/retention")
 ```
 
+## Using the package
+
+```{r}
+library(retention)
+
+```
+
+
 ## Data
 
 The data in this package was generated using the `simulate_retention_data.R` script. The datasets are stored as RDS files, called by the retention package, or accessed as csv files in retention_data/ and are:
 
 1.  `user_activity`: This dataset tracks the activity of users across different build versions and dates. It contains 146,463 rows and 3 variables: `user`, `build`, and `activity_date`.
 
+```{r}
+dim(retention::user_activity)
+
+retention::user_activity %>% head() %>% gt::gt()
+
+
+```
+
+
 2.  `users`: This dataset tracks the activity of users from their first build version and date. It contains 47,031 rows and 4 variables: `user`, `first_build`, `activity_start`, and `activity_days`.
+
+```{r}
+dim(retention::users)
+
+retention::users %>% head() %>% gt::gt()
+
+
+```
+
 
 3.  `builds`: This dataset tracks the release information of different build versions. It contains 57 rows and 4 variables: `build`, `release_length`, `release_start`, and `release_end`.
 
 For more detailed information about these datasets, please refer to the documentation in the `pkg_data.R` file.
+
+
+```{r}
+
+dim(retention::builds)
+
+retention::builds %>% head() %>% gt::gt()
+
+
+
+```
+
+
+## Functions that simulate user activity for different versions of an app
+
+Simulate builds.
+
+```{r}
+
+versions <- 
+  get_versions(
+          major_change_max = 2, 
+          minor_change_max = 1, 
+          hot_fix_max = 1) 
+
+versions %>% gt::gt()
+
+```
+
+Simulate release dates for builds. 
+
+```{r}
+builds %>% set_build_releases(release_length_max = 7)
+
+builds %>% gt::gt()
+
+```
+
+Simulate users for builds. 
+
+```{r}
+users <- get_users(
+    builds, 
+    new_users_max = 3, 
+    max_activity_days = 14)
+
+users %>% gt::gt()
+
+```
+
+Simulate activity. 
+
+```{r}
+user_activity_data <- get_activity(builds, users) %>% 
+  dplyr::filter(active_on_date == TRUE)
+
+head(user_activity_data, 50) %>% gt::gt()
+
+```
+
+
