@@ -8,6 +8,10 @@ title: README
 
 It has functions for simulating builds, users, and activity data, each of which is customisable to control scale of data output.
 
+## Inspiration
+
+The inspiration for these data is Unity Analytics game events. In order to present retention analytics on game data open source, I need simulated data that imitates the data structure I worked with at a video game studio. 
+
 ## Installation
 
 You can install the `Retention` package from GitHub using the `devtools` package. Run the following commands in your R console:
@@ -120,3 +124,6 @@ head(user_activity_data, 50)
 ```
 
 
+## Limitation
+
+One limitation of these data is that the simulation assumes that users update when the software is released, which is not necessarily the case. However for the retention analytics I intend to generate with this, that shouldn't be too much of an issue. 
