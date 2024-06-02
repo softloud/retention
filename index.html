@@ -154,16 +154,15 @@
 <span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>versions</span>
 <span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="do">## # A tibble: 7 × 4</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="do">## # A tibble: 6 × 4</span></span>
 <span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="do">##   major_change minor_change hot_fix build</span></span>
 <span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="do">##          &lt;int&gt;        &lt;int&gt;   &lt;int&gt; &lt;chr&gt;</span></span>
 <span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="do">## 1            0            0       0 0.0.0</span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="do">## 2            0            1       0 0.1.0</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="do">## 3            1            0       0 1.0.0</span></span>
-<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="do">## 4            1            1       0 1.1.0</span></span>
-<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="do">## 5            2            0       0 2.0.0</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="do">## 6            2            1       0 2.1.0</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="do">## 7            2            1       1 2.1.1</span></span></code></pre></div>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="do">## 2            0            0       1 0.0.1</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="do">## 3            0            1       0 0.1.0</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="do">## 4            1            0       0 1.0.0</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="do">## 5            1            0       1 1.0.1</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="do">## 6            2            0       0 2.0.0</span></span></code></pre></div>
 <p>Simulate release dates for builds.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>builds <span class="ot">&lt;-</span> builds <span class="sc">%&gt;%</span> <span class="fu">set_build_releases</span>(<span class="at">release_length_max =</span> <span class="dv">7</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
@@ -172,16 +171,16 @@
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">## # A tibble: 57 × 4</span></span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="do">##    build release_length release_start release_end</span></span>
 <span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="do">##    &lt;chr&gt;          &lt;int&gt; &lt;date&gt;        &lt;date&gt;     </span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="do">##  1 0.0.0              1 2023-01-07    2023-01-07 </span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">##  2 0.0.1              2 2023-01-08    2023-01-09 </span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">##  3 0.0.2              7 2023-01-10    2023-01-16 </span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">##  4 0.1.0              3 2023-01-17    2023-01-19 </span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">##  5 0.1.1              4 2023-01-20    2023-01-23 </span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">##  6 0.1.2              3 2023-01-24    2023-01-26 </span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">##  7 0.1.3              2 2023-01-27    2023-01-28 </span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="do">##  8 0.2.0              7 2023-01-29    2023-02-04 </span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="do">##  9 0.3.0              5 2023-02-05    2023-02-09 </span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="do">## 10 0.3.1              3 2023-02-10    2023-02-12 </span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="do">##  1 0.0.0              5 2023-01-07    2023-01-11 </span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">##  2 0.0.1              6 2023-01-12    2023-01-17 </span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">##  3 0.0.2              7 2023-01-18    2023-01-24 </span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">##  4 0.1.0              5 2023-01-25    2023-01-29 </span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">##  5 0.1.1              7 2023-01-30    2023-02-05 </span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">##  6 0.1.2              4 2023-02-06    2023-02-09 </span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">##  7 0.1.3              7 2023-02-10    2023-02-16 </span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="do">##  8 0.2.0              6 2023-02-17    2023-02-22 </span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="do">##  9 0.3.0              2 2023-02-23    2023-02-24 </span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="do">## 10 0.3.1              7 2023-02-25    2023-03-03 </span></span>
 <span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="do">## # ℹ 47 more rows</span></span></code></pre></div>
 <p>Simulate users for builds.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>users <span class="ot">&lt;-</span> <span class="fu">get_users</span>(</span>
@@ -191,40 +190,40 @@
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>users</span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## # A tibble: 95 × 4</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## # A tibble: 97 × 4</span></span>
 <span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">##    user    first_build activity_start activity_days</span></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;       &lt;date&gt;                 &lt;int&gt;</span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##  1 user_1  0.0.2       2023-01-11                13</span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##  2 user_2  0.1.0       2023-01-17                 1</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">##  3 user_3  0.1.0       2023-01-17                 9</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">##  4 user_4  0.1.0       2023-01-17                 8</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">##  5 user_5  0.1.1       2023-01-21                 8</span></span>
-<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">##  6 user_6  0.1.2       2023-01-26                13</span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">##  7 user_7  0.1.2       2023-01-26                10</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">##  8 user_8  0.1.3       2023-01-28                 1</span></span>
-<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">##  9 user_9  0.1.3       2023-01-28                12</span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## 10 user_10 0.1.3       2023-01-27                 7</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">## # ℹ 85 more rows</span></span></code></pre></div>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##  1 user_1  0.1.1       2023-02-02                 6</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##  2 user_2  0.1.1       2023-02-04                 1</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">##  3 user_3  0.1.2       2023-02-08                 6</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">##  4 user_4  0.1.2       2023-02-08                 4</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="do">##  5 user_5  0.1.3       2023-02-13                14</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="do">##  6 user_6  0.1.3       2023-02-10                14</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="do">##  7 user_7  0.1.3       2023-02-15                14</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="do">##  8 user_8  0.2.0       2023-02-20                 3</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="do">##  9 user_9  0.2.0       2023-02-18                 2</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="do">## 10 user_10 0.2.0       2023-02-20                11</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="do">## # ℹ 87 more rows</span></span></code></pre></div>
 <p>Simulate activity.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>user_activity_data <span class="ot">&lt;-</span> <span class="fu">get_activity</span>(builds, users) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(active_on_date <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="fu">head</span>(user_activity_data, <span class="dv">50</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>user_activity_data</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="do">## # A tibble: 50 × 8</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="do">## # A tibble: 194 × 8</span></span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="do">##    user    first_build activity_start activity_days build activity_date</span></span>
 <span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="do">##    &lt;chr&gt;   &lt;chr&gt;       &lt;date&gt;                 &lt;int&gt; &lt;chr&gt; &lt;date&gt;       </span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">##  1 user_1  0.0.2       2023-01-11                13 0.0.2 2023-01-11   </span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">##  2 user_10 0.1.3       2023-01-27                 7 0.1.3 2023-01-27   </span></span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">##  3 user_10 0.1.3       2023-01-27                 7 0.2.0 2023-01-30   </span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="do">##  4 user_11 0.2.0       2023-02-03                 1 0.2.0 2023-02-03   </span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="do">##  5 user_12 0.2.0       2023-01-30                13 0.2.0 2023-01-30   </span></span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="do">##  6 user_12 0.2.0       2023-01-30                13 0.2.0 2023-01-31   </span></span>
-<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="do">##  7 user_12 0.2.0       2023-01-30                13 0.2.0 2023-02-04   </span></span>
-<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="do">##  8 user_13 0.3.0       2023-02-07                 3 0.3.0 2023-02-07   </span></span>
-<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="do">##  9 user_14 0.3.0       2023-02-06                 9 0.3.0 2023-02-06   </span></span>
-<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="do">## 10 user_14 0.3.0       2023-02-06                 9 0.3.1 2023-02-12   </span></span>
-<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="do">## # ℹ 40 more rows</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">##  1 user_1  0.1.1       2023-02-02                 6 0.1.1 2023-02-02   </span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="do">##  2 user_10 0.2.0       2023-02-20                11 0.2.0 2023-02-20   </span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="do">##  3 user_10 0.2.0       2023-02-20                11 0.2.0 2023-02-21   </span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="do">##  4 user_10 0.2.0       2023-02-20                11 0.2.0 2023-02-22   </span></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="do">##  5 user_11 0.3.0       2023-02-23                 9 0.3.0 2023-02-23   </span></span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="do">##  6 user_12 0.3.1       2023-02-25                 6 0.3.1 2023-02-25   </span></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="do">##  7 user_13 0.3.1       2023-02-27                 2 0.3.1 2023-02-27   </span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="do">##  8 user_14 1.0.0       2023-03-04                 6 1.0.0 2023-03-04   </span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="do">##  9 user_15 1.1.1       2023-03-15                11 1.1.1 2023-03-15   </span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="do">## 10 user_15 1.1.1       2023-03-15                11 1.1.1 2023-03-16   </span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="do">## # ℹ 184 more rows</span></span>
 <span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="do">## # ℹ 2 more variables: days_from_start &lt;drtn&gt;, active_on_date &lt;lgl&gt;</span></span></code></pre></div>
 </div>
 <div class="section level2">
