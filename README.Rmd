@@ -95,7 +95,7 @@ versions
 Simulate release dates for builds. 
 
 ```{r}
-builds %>% set_build_releases(release_length_max = 7)
+builds <- builds %>% set_build_releases(release_length_max = 7)
 
 builds
 
