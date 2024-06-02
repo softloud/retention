@@ -36,7 +36,7 @@ get_activity <- function(builds, users) {
                 active_on_date = purrr::map_lgl(days_from_start, 
                     ~rbinom(1, 1, get_activity_probability(.x))
                 ),
-                # set activity to be false if exceeds length of actitivity for user
+                # set activity to be false if exceeds length of activity for user
                 active_on_date = dplyr::if_else(
                     days_from_start > activity_days,
                     FALSE,
