@@ -8,6 +8,11 @@ title: README
 
 It has functions for simulating builds, users, and activity data, each of which is customisable to control scale of data output.
 
+
+The core of the data is simulating a decrease in activity according to the number of days a player has been active. So, on day 0, there is a 100% chance of activity, but on day 1, only a 30% chance of activity, after day 30, a very small chance of activity. This mimics how player retention data is usually shaped. 
+
+This is done by creating a probability function dependent on days from start of activity, and sampling from a binomial distribution. See `get_activity_probability`and `get_activity` for more details. 
+
 ## Inspiration
 
 The inspiration for these data is Unity Analytics game events. In order to present retention analytics on game data open source, I need simulated data that imitates the data structure I worked with at a video game studio. 

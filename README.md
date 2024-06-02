@@ -8,6 +8,16 @@ of different build versions on user activity.
 It has functions for simulating builds, users, and activity data, each
 of which is customisable to control scale of data output.
 
+The core of the data is simulating a decrease in activity according to
+the number of days a player has been active. So, on day 0, there is a
+100% chance of activity, but on day 1, only a 30% chance of activity,
+after day 30, a very small chance of activity. This mimics how player
+retention data is usually shaped.
+
+This is done by creating a probability function dependent on days from
+start of activity, and sampling from a binomial distribution. See
+`get_activity_probability`and `get_activity` for more details.
+
 ## Inspiration
 
 The inspiration for these data is Unity Analytics game events. In order
@@ -118,17 +128,16 @@ Simulate builds.
 
     versions
 
-    ## # A tibble: 8 × 4
+    ## # A tibble: 7 × 4
     ##   major_change minor_change hot_fix build
     ##          <int>        <int>   <int> <chr>
     ## 1            0            0       0 0.0.0
-    ## 2            0            0       1 0.0.1
-    ## 3            0            1       0 0.1.0
-    ## 4            1            0       0 1.0.0
-    ## 5            1            1       0 1.1.0
-    ## 6            1            1       1 1.1.1
-    ## 7            2            0       0 2.0.0
-    ## 8            2            0       1 2.0.1
+    ## 2            0            1       0 0.1.0
+    ## 3            1            0       0 1.0.0
+    ## 4            1            1       0 1.1.0
+    ## 5            2            0       0 2.0.0
+    ## 6            2            1       0 2.1.0
+    ## 7            2            1       1 2.1.1
 
 Simulate release dates for builds.
 
@@ -139,16 +148,16 @@ Simulate release dates for builds.
     ## # A tibble: 57 × 4
     ##    build release_length release_start release_end
     ##    <chr>          <int> <date>        <date>     
-    ##  1 0.0.0              2 2023-01-07    2023-01-08 
-    ##  2 0.0.1              2 2023-01-09    2023-01-10 
-    ##  3 0.0.2              2 2023-01-11    2023-01-12 
-    ##  4 0.1.0              6 2023-01-13    2023-01-18 
-    ##  5 0.1.1              5 2023-01-19    2023-01-23 
-    ##  6 0.1.2              6 2023-01-24    2023-01-29 
-    ##  7 0.1.3              4 2023-01-30    2023-02-02 
-    ##  8 0.2.0              1 2023-02-03    2023-02-03 
-    ##  9 0.3.0              4 2023-02-04    2023-02-07 
-    ## 10 0.3.1              1 2023-02-08    2023-02-08 
+    ##  1 0.0.0              1 2023-01-07    2023-01-07 
+    ##  2 0.0.1              2 2023-01-08    2023-01-09 
+    ##  3 0.0.2              7 2023-01-10    2023-01-16 
+    ##  4 0.1.0              3 2023-01-17    2023-01-19 
+    ##  5 0.1.1              4 2023-01-20    2023-01-23 
+    ##  6 0.1.2              3 2023-01-24    2023-01-26 
+    ##  7 0.1.3              2 2023-01-27    2023-01-28 
+    ##  8 0.2.0              7 2023-01-29    2023-02-04 
+    ##  9 0.3.0              5 2023-02-05    2023-02-09 
+    ## 10 0.3.1              3 2023-02-10    2023-02-12 
     ## # ℹ 47 more rows
 
 Simulate users for builds.
@@ -160,20 +169,20 @@ Simulate users for builds.
 
     users
 
-    ## # A tibble: 90 × 4
+    ## # A tibble: 95 × 4
     ##    user    first_build activity_start activity_days
     ##    <chr>   <chr>       <date>                 <int>
-    ##  1 user_1  0.0.0       2023-01-08                 8
-    ##  2 user_2  0.0.0       2023-01-08                12
-    ##  3 user_3  0.0.0       2023-01-07                12
-    ##  4 user_4  0.0.1       2023-01-09                 4
-    ##  5 user_5  0.0.1       2023-01-10                14
-    ##  6 user_6  0.0.2       2023-01-11                11
-    ##  7 user_7  0.0.2       2023-01-11                 2
-    ##  8 user_8  0.1.1       2023-01-20                 5
-    ##  9 user_9  0.1.1       2023-01-23                 3
-    ## 10 user_10 0.1.1       2023-01-23                12
-    ## # ℹ 80 more rows
+    ##  1 user_1  0.0.2       2023-01-11                13
+    ##  2 user_2  0.1.0       2023-01-17                 1
+    ##  3 user_3  0.1.0       2023-01-17                 9
+    ##  4 user_4  0.1.0       2023-01-17                 8
+    ##  5 user_5  0.1.1       2023-01-21                 8
+    ##  6 user_6  0.1.2       2023-01-26                13
+    ##  7 user_7  0.1.2       2023-01-26                10
+    ##  8 user_8  0.1.3       2023-01-28                 1
+    ##  9 user_9  0.1.3       2023-01-28                12
+    ## 10 user_10 0.1.3       2023-01-27                 7
+    ## # ℹ 85 more rows
 
 Simulate activity.
 
@@ -185,16 +194,16 @@ Simulate activity.
     ## # A tibble: 50 × 8
     ##    user    first_build activity_start activity_days build activity_date
     ##    <chr>   <chr>       <date>                 <int> <chr> <date>       
-    ##  1 user_1  0.0.0       2023-01-08                 8 0.0.0 2023-01-08   
-    ##  2 user_1  0.0.0       2023-01-08                 8 0.0.1 2023-01-09   
-    ##  3 user_1  0.0.0       2023-01-08                 8 0.0.2 2023-01-12   
-    ##  4 user_10 0.1.1       2023-01-23                12 0.1.1 2023-01-23   
-    ##  5 user_10 0.1.1       2023-01-23                12 0.1.2 2023-01-25   
-    ##  6 user_10 0.1.1       2023-01-23                12 0.1.2 2023-01-26   
-    ##  7 user_11 0.1.2       2023-01-28                13 0.1.2 2023-01-28   
-    ##  8 user_11 0.1.2       2023-01-28                13 0.1.2 2023-01-29   
-    ##  9 user_11 0.1.2       2023-01-28                13 0.1.3 2023-02-02   
-    ## 10 user_12 0.1.2       2023-01-27                12 0.1.2 2023-01-27   
+    ##  1 user_1  0.0.2       2023-01-11                13 0.0.2 2023-01-11   
+    ##  2 user_10 0.1.3       2023-01-27                 7 0.1.3 2023-01-27   
+    ##  3 user_10 0.1.3       2023-01-27                 7 0.2.0 2023-01-30   
+    ##  4 user_11 0.2.0       2023-02-03                 1 0.2.0 2023-02-03   
+    ##  5 user_12 0.2.0       2023-01-30                13 0.2.0 2023-01-30   
+    ##  6 user_12 0.2.0       2023-01-30                13 0.2.0 2023-01-31   
+    ##  7 user_12 0.2.0       2023-01-30                13 0.2.0 2023-02-04   
+    ##  8 user_13 0.3.0       2023-02-07                 3 0.3.0 2023-02-07   
+    ##  9 user_14 0.3.0       2023-02-06                 9 0.3.0 2023-02-06   
+    ## 10 user_14 0.3.0       2023-02-06                 9 0.3.1 2023-02-12   
     ## # ℹ 40 more rows
     ## # ℹ 2 more variables: days_from_start <drtn>, active_on_date <lgl>
 
