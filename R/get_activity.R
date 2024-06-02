@@ -1,7 +1,7 @@
 #' Generate user activity data
 #'
 #' This function generates a dataframe where each row is a combination of a row from `users` and a row from `activity_dates`.
-#' It also calculates the `days_from_start` and whether the user was active on a particular date, using the [get_activity_probability] function.
+#' It also calculates the `days_from_start` and simulates whether the user was active on a particular date, using the [get_activity_probability] function, dependent on number of days of activity, so that there is a much lower chance of activity the longer it has been from the user's start date.
 #' The result is filtered so that `days_from_start` begins at 0.
 #'
 #' @param builds A dataframe with build release information.
